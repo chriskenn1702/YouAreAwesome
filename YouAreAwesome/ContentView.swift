@@ -9,34 +9,60 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var messageString = "When the Genius Bar needs help, they call you!"
+    @State var messageString = "I Have a Visceral Hatred For Gradient"
     var body: some View {
-        VStack (spacing:0){
-
-            Text(messageString)
-                .font(.largeTitle)
-                .fontWeight(.heavy)
-                .minimumScaleFactor(0.5)
-                .multilineTextAlignment(.center)
-                .foregroundColor(.red)
-                .italic()
-                .frame(height: 150)
-                .frame(maxWidth: .infinity)
-                .border(.orange, width: 1)
+        ZStack {
+            Rectangle()
+                .fill(
+                    Gradient(colors: [.yellow,.green, .red]) 
+                )
+                .ignoresSafeArea()
+//            Color.yellow
+//                .opacity(0.5)
+//                .ignoresSafeArea()
+            
+            VStack(spacing:0) {
+                Text("You Have Skills!")
+                    .font(.largeTitle)
+                    .fontWeight(.black)
+                    .foregroundColor(Color("BC-Gold"))
+                    .padding()
+                    .background(Color("Maroon"))
+                    .cornerRadius(15)
+                
+                Spacer()
+                
+                Text(messageString)
+                    .font(.largeTitle)
+                    .fontWeight(.heavy)
+                    .minimumScaleFactor(0.5)
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.red)
+                    .italic()
+                    .frame(height: 150)
+                    .frame(maxWidth: .infinity)
+                    .border(.orange, width: 1)
+                    .padding()
+                
+                Spacer()
+                
+                HStack{
+                    Button("Awesome") {
+                        messageString = "You Are Awesome!"
+                    }
+                    .buttonStyle(.borderedProminent)
+                    Spacer()
+                    Button("Great"){
+                        messageString = "You Are Great!"
+                    }
+                    .buttonStyle(.borderedProminent)
+                }
+                .border(.purple, width: 5)
                 .padding()
-            HStack{
-                Button("Awesome") {
-                    messageString = "You Are Awesome!"
-                }
-                .buttonStyle(.borderedProminent)
-                Button("Great"){
-                    messageString = "You Are Great!"
-                }
-                .buttonStyle(.borderedProminent)
+                .tint(Color("Vermilliun"))
             }
-            .border(.purple, width: 5)
+            .padding()
         }
-        .padding()
     }
 }
 
