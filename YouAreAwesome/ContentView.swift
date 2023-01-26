@@ -9,27 +9,23 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var messageString = ""
+    @State var messageString = "When the Genius Bar needs help, they call you!"
     var body: some View {
-        VStack {
-            //            Image(systemName: "swift")
-            //                .resizable()
-            //                .scaledToFit()
-            //                .padding(.horizontal, 30.0)
-            //                .padding(.bottom, 100)
-            //            //.imageScale(.large)
-            //                .foregroundColor(.orange)
-            // .background(.blue)
+        VStack (spacing:0){
+
             Text(messageString)
                 .font(.largeTitle)
                 .fontWeight(.heavy)
+                .minimumScaleFactor(0.5)
+                .multilineTextAlignment(.center)
                 .foregroundColor(.red)
                 .italic()
+                .frame(height: 150)
+                .frame(maxWidth: .infinity)
+                .border(.orange, width: 1)
                 .padding()
-            //.background(.yellow)
             HStack{
                 Button("Awesome") {
-                    // This is action performed when button pressed
                     messageString = "You Are Awesome!"
                 }
                 .buttonStyle(.borderedProminent)
@@ -38,6 +34,7 @@ struct ContentView: View {
                 }
                 .buttonStyle(.borderedProminent)
             }
+            .border(.purple, width: 5)
         }
         .padding()
     }
