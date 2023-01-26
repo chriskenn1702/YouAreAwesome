@@ -9,34 +9,45 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var messageString = "When the Genius Bar needs help, they call you!"
+    @State var messageString = "Namaste"
     var body: some View {
-//        GeometryReader {geometry in
-            VStack(spacing:0) {
+            VStack {
                 Spacer()
+                
+                Image(systemName: "speaker.wave.3", variableValue: 0.5)
+                    .resizable()
+                    .scaledToFit()
+//                    .foregroundColor(.orange)
+                    .symbolRenderingMode(.multicolor)
+                    .padding()
+                    .background(Color(hue: 0.521, saturation: 0.873, brightness: 0.949, opacity: 0.592))
+                    .cornerRadius(30)
+//                    .scaledToFill()
+//                    .border(.pink)
+//                    .frame(width: 200, height: 300)
+//                    .clipped()
+//                    .border(.blue)
+//                    .clipShape(Circle())
+                    .shadow(color: .gray, radius: 30, x: 20, y:20)
+                    .overlay(RoundedRectangle(cornerRadius: 30)
+                        .stroke(.teal, lineWidth: 1))
+                    .padding()
+                
                 
                 Text(messageString)
                     .font(.largeTitle)
                     .fontWeight(.heavy)
                     .minimumScaleFactor(0.5)
                     .multilineTextAlignment(.center)
-                    .foregroundColor(.red)
+                    .foregroundColor(.pink)
                     .italic()
                     .frame(height: 150)
                     .frame(maxWidth: .infinity)
-    //                .border(.orange, width: 1)
                     .padding()
+//                    .border(.blue)
                 
                 Spacer()
                 
-//                Divider()
-//                    .background(.blue)
-//                    .padding()
-//                    .frame(width: 150.0)
-//
-//                Rectangle()
-//                    .fill(.indigo)
-//                    .frame(width: geometry.size.width * 2/3, height: 1)
                 
                 HStack{
                     Button("Awesome") {
@@ -52,11 +63,9 @@ struct ContentView: View {
                     }
                     .buttonStyle(.borderedProminent)
                 }
-    //            .border(.purple, width: 5)
                 .padding()
                 .tint(Color("Vermilliun"))
             }
-//        }
     }
 }
 
