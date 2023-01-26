@@ -14,7 +14,7 @@ struct ContentView: View {
             VStack {
                 Spacer()
                 
-                Image(systemName: "speaker.wave.3", variableValue: 0.5)
+                Image(systemName: "cloud.sun.rain.fill")
                     .resizable()
                     .scaledToFit()
 //                    .foregroundColor(.orange)
