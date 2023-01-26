@@ -9,27 +9,10 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var messageString = "I Have a Visceral Hatred For Gradient"
+    @State var messageString = "When the Genius Bar needs help, they call you!"
     var body: some View {
-        ZStack {
-            Rectangle()
-                .fill(
-                    Gradient(colors: [.yellow,.green, .red]) 
-                )
-                .ignoresSafeArea()
-//            Color.yellow
-//                .opacity(0.5)
-//                .ignoresSafeArea()
-            
+//        GeometryReader {geometry in
             VStack(spacing:0) {
-                Text("You Have Skills!")
-                    .font(.largeTitle)
-                    .fontWeight(.black)
-                    .foregroundColor(Color("BC-Gold"))
-                    .padding()
-                    .background(Color("Maroon"))
-                    .cornerRadius(15)
-                
                 Spacer()
                 
                 Text(messageString)
@@ -41,28 +24,39 @@ struct ContentView: View {
                     .italic()
                     .frame(height: 150)
                     .frame(maxWidth: .infinity)
-                    .border(.orange, width: 1)
+    //                .border(.orange, width: 1)
                     .padding()
                 
                 Spacer()
+                
+//                Divider()
+//                    .background(.blue)
+//                    .padding()
+//                    .frame(width: 150.0)
+//
+//                Rectangle()
+//                    .fill(.indigo)
+//                    .frame(width: geometry.size.width * 2/3, height: 1)
                 
                 HStack{
                     Button("Awesome") {
                         messageString = "You Are Awesome!"
                     }
                     .buttonStyle(.borderedProminent)
+                    
                     Spacer()
+                    
+                    
                     Button("Great"){
                         messageString = "You Are Great!"
                     }
                     .buttonStyle(.borderedProminent)
                 }
-                .border(.purple, width: 5)
+    //            .border(.purple, width: 5)
                 .padding()
                 .tint(Color("Vermilliun"))
             }
-            .padding()
-        }
+//        }
     }
 }
 
