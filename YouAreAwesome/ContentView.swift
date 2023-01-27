@@ -9,31 +9,12 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var messageString = "Namaste"
+    @State var messageString = ""
     var body: some View {
             VStack {
                 Spacer()
-                
-                Image(systemName: "cloud.sun.rain.fill")
-                    .resizable()
-                    .scaledToFit()
-//                    .foregroundColor(.orange)
-                    .symbolRenderingMode(.multicolor)
-                    .padding()
-                    .background(Color(hue: 0.521, saturation: 0.873, brightness: 0.949, opacity: 0.592))
-                    .cornerRadius(30)
-//                    .scaledToFill()
-//                    .border(.pink)
-//                    .frame(width: 200, height: 300)
-//                    .clipped()
-//                    .border(.blue)
-//                    .clipShape(Circle())
-                    .shadow(color: .gray, radius: 30, x: 20, y:20)
-                    .overlay(RoundedRectangle(cornerRadius: 30)
-                        .stroke(.teal, lineWidth: 1))
-                    .padding()
-                
-                
+                Spacer()
+    
                 Text(messageString)
                     .font(.largeTitle)
                     .fontWeight(.heavy)
@@ -44,27 +25,22 @@ struct ContentView: View {
                     .frame(height: 150)
                     .frame(maxWidth: .infinity)
                     .padding()
-//                    .border(.blue)
                 
                 Spacer()
                 
-                
-                HStack{
-                    Button("Awesome") {
-                        messageString = "You Are Awesome!"
+                Button("Show Message") {
+                    let message1 = "You Are Awesome!"
+                    let message2 = "You Are Great!"
+                    if messageString == message2{
+                        messageString = message1
+                    } else{
+                        messageString = message2
                     }
-                    .buttonStyle(.borderedProminent)
-                    
-                    Spacer()
-                    
-                    
-                    Button("Great"){
-                        messageString = "You Are Great!"
-                    }
-                    .buttonStyle(.borderedProminent)
                 }
-                .padding()
-                .tint(Color("Vermilliun"))
+                .buttonStyle(.borderedProminent)
+             
+                Spacer()
+                
             }
     }
 }
