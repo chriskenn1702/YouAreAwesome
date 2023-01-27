@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State var messageString = ""
+    @State var messageNumber = 0
     @State var imageName = ""
     @State var imageNumber = 0
     
@@ -39,9 +40,16 @@ struct ContentView: View {
                 Spacer()
                 
                 Button("Show Message") {
-                    let message1 = "You Are Awesome!"
-                    let message2 = "You Are Great!"
-                    messageString = (messageString == message1 ?  message2 : message1)
+                    var messageArray = ["You Are Awesome!",
+                                        "You Are Great!",
+                                        "You Rule!",
+                                        "Message 4",
+                                        "You Want Another Message, Really?"]
+                    messageString = messageArray[messageNumber]
+                    messageNumber+=1
+                    if messageNumber == messageArray.count{
+                        messageNumber = 0
+                    }
                     imageName = "image\(imageNumber)"
                     imageNumber+=1
                     if imageNumber == 10{
