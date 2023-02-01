@@ -10,22 +10,12 @@ import SwiftUI
 
 struct ContentView: View {
     @State var messageString = ""
-    @State var messageNumber = 0
     @State var imageName = ""
-    @State var imageNumber = 0
+    @State private var lastMessageNumber = -1
+    @State private var lastImageNumber = -1
     
     var body: some View {
             VStack {
-    
-                Image(imageName)
-                    .resizable()
-                    .scaledToFit()
-                    .cornerRadius(30)
-                    .shadow(radius: 30)
-                    .padding()
-                
-                Spacer()
-    
                 Text(messageString)
                     .font(.largeTitle)
                     .fontWeight(.heavy)
@@ -38,6 +28,15 @@ struct ContentView: View {
                     .padding()
                 
                 Spacer()
+    
+                Image(imageName)
+                    .resizable()
+                    .scaledToFit()
+                    .cornerRadius(30)
+                    .shadow(radius: 30)
+                    .padding()
+                
+                Spacer()
                 
                 Button("Show Message") {
                     let messageArray = ["You Are Awesome!",
@@ -45,8 +44,19 @@ struct ContentView: View {
                                         "You Rule!",
                                         "Message 4",
                                         "You Want Another Message, Really?"]
-                    messageString = messageArray[Int.random(in: 0...messageArray.count-1)]
-                    imageName = "image\(Int.random(in: 0...9))"
+                    var messageNumber = Int.random(in: 0...messageArray.count-1)
+                    while messageNumber == lastMessageNumber{
+                        messageNumber = Int.random(in: 0...messageArray.count-1)
+                    }
+                    messageString = messageArray[messageNumber]
+                    lastMessageNumber = messageNumber
+                    var imageNumber = Int.random(in: 0...9)
+                    while imageNumber == lastImageNumber{
+                        imageNumber = Int.random(in: 0...9)
+                    }
+                    imageName = "image\(imageNumber)"
+                    lastImageNumber = imageNumber
+        
                     
                 }
                 .buttonStyle(.borderedProminent)
