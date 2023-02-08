@@ -16,6 +16,7 @@ struct ContentView: View {
     @State private var lastImageNumber = -1
     @State private var audioPlayer: AVAudioPlayer!
     @State private var lastSoundNumber = -1
+    @State private var soundIsOn = true
     
     var body: some View {
             VStack {
@@ -41,23 +42,41 @@ struct ContentView: View {
                 
                 Spacer()
                 
-                Button("Show Message") {
-                    let messageArray = ["You Are Awesome!",
-                                        "You Are Great!",
-                                        "You Rule!",
-                                        "Message 4",
-                                        "You Want Another Message, Really?"]
-                    lastMessageNumber = nonRepeatingRandom(lastNumber: lastMessageNumber, upperBounds: messageArray.count-1)
-                    messageString = messageArray[lastMessageNumber]
-                   
-                    lastImageNumber = nonRepeatingRandom(lastNumber: lastImageNumber, upperBounds: 9)
-                    imageName = "image\(lastImageNumber)"
+                HStack{
                     
-                    lastSoundNumber = nonRepeatingRandom(lastNumber: lastSoundNumber, upperBounds: 5)
-                    playSound(soundName: "sound\(lastSoundNumber)")
+                    Text("Sound On:")
                     
+                    Toggle("", isOn: $soundIsOn)
+                        .labelsHidden()
+                        .onChange(of: soundIsOn){ _ in
+                            if audioPlayer != nil && audioPlayer.isPlaying{
+                                audioPlayer.stop()
+                            }
+                        }
+                    
+                    Spacer()
+                    
+                    Button("Show Message") {
+                        let messageArray = ["You Are Awesome!",
+                                            "You Are Great!",
+                                            "You Rule!",
+                                            "Message 4",
+                                            "You Want Another Message, Really?"]
+                        lastMessageNumber = nonRepeatingRandom(lastNumber: lastMessageNumber, upperBounds: messageArray.count-1)
+                        messageString = messageArray[lastMessageNumber]
+                        
+                        lastImageNumber = nonRepeatingRandom(lastNumber: lastImageNumber, upperBounds: 9)
+                        imageName = "image\(lastImageNumber)"
+                        
+                        lastSoundNumber = nonRepeatingRandom(lastNumber: lastSoundNumber, upperBounds: 5)
+                        if soundIsOn{
+                            playSound(soundName: "sound\(lastSoundNumber)")
+                        }
+                        
+                    }
+                    .buttonStyle(.borderedProminent)
                 }
-                .buttonStyle(.borderedProminent)
+                .padding()
              
                 
             }
